@@ -105,3 +105,6 @@ simple_bot.py
 tea_shop_bot_fixed.py
 setup_bot.py
 clear_commands.py
+
+# Local Netlify folder
+.netlify

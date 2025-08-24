@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍵 Развертывание Чайной Лавки на Netlify</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .step {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #4CAF50;
+        }
+        .step-number {
+            background: #4CAF50;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .highlight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 1.1em;
+        }
+        .button {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        .warning {
+            background: rgba(255, 193, 7, 0.2);
+            border-left-color: #FFC107;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .success {
+            background: rgba(76, 175, 80, 0.2);
+            border-left-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍵 Развертывание Чайной Лавки на Netlify</h1>
+        
+        <div class="step success">
+            <h3>✅ Что уже готово:</h3>
+            <ul>
+                <li>Telegram бот @CalmBrew_Bot настроен</li>
+                <li>Mini App код написан и собран</li>
+                <li>Папка dist готова к развертыванию</li>
+                <li>Все файлы подготовлены</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">1</span>Создайте аккаунт на Netlify</h3>
+            <p>Перейдите на сайт Netlify и создайте бесплатный аккаунт:</p>
+            <a href="https://netlify.com" target="_blank" class="button">🌐 Открыть Netlify</a>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">2</span>Войдите в аккаунт</h3>
+            <p>Используйте GitHub, Google или email для входа</p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">3</span>Найдите область загрузки</h3>
+            <p>На главной странице найдите большую область с текстом:</p>
+            <div class="highlight">"Drag and drop your site output folder here"</div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">4</span>Откройте папку проекта</h3>
+            <p>Откройте Finder и перейдите в папку проекта:</p>
+            <div class="highlight">/Users/sarkisisraelyan/Desktop/сайт чая/</div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">5</span>Найдите папку dist</h3>
+            <p>В папке проекта найдите папку <strong>dist</strong> - это готовая сборка вашего Mini App</p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">6</span>Загрузите на Netlify</h3>
+            <p>Перетащите папку <strong>dist</strong> в область загрузки на Netlify</p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">7</span>Получите URL</h3>
+            <p>После загрузки Netlify автоматически создаст URL для вашего сайта</p>
+        </div>
+
+        <div class="step warning">
+            <h3>⚠️ Важно!</h3>
+            <p>Сохраните полученный URL! Он понадобится для настройки Mini App в Telegram</p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">8</span>Настройте Mini App в Telegram</h3>
+            <p>После получения URL:</p>
+            <ol>
+                <li>Напишите <a href="https://t.me/botfather" target="_blank">@BotFather</a></li>
+                <li>Команда: <code>/setmenubutton</code></li>
+                <li>Выберите бота @CalmBrew_Bot</li>
+                <li>Текст: 🍵 Открыть магазин</li>
+                <li>URL: ваш URL с Netlify</li>
+            </ol>
+        </div>
+
+        <div class="step success">
+            <h3>🎉 Готово!</h3>
+            <p>После настройки у вас будет полнофункциональный Telegram Mini App для продажи чая!</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://netlify.com" target="_blank" class="button">🚀 Начать развертывание</a>
+            <a href="https://t.me/CalmBrew_Bot" target="_blank" class="button">🤖 Открыть бота</a>
+        </div>
+    </div>
+</body>
+</html>
