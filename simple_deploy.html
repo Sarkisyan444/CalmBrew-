@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍵 Чайная Лавка - Развертывание</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        .deploy-option {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #4CAF50;
+        }
+        .button {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        .success {
+            background: rgba(76, 175, 80, 0.2);
+            border-left-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍵 Чайная Лавка - Развертывание</h1>
+        
+        <div class="deploy-option success">
+            <h3>✅ Что уже готово:</h3>
+            <ul>
+                <li>Telegram бот @CalmBrew_Bot настроен</li>
+                <li>Mini App код написан и собран</li>
+                <li>GitHub репозиторий создан</li>
+                <li>Файлы подготовлены для развертывания</li>
+            </ul>
+        </div>
+
+        <div class="deploy-option">
+            <h3>🚀 Вариант 1: GitHub Pages (рекомендуется)</h3>
+            <p>Бесплатно, автоматическое обновление</p>
+            <a href="https://github.com/sarkisisraelyan/tea-shop-mini-app/settings/pages" target="_blank" class="button">🌐 Настроить GitHub Pages</a>
+            
+            <h4>📋 Инструкция:</h4>
+            <ol>
+                <li>Нажмите кнопку выше</li>
+                <li>В разделе 'Source' выберите 'Deploy from a branch'</li>
+                <li>Branch: main, Folder: / (root)</li>
+                <li>Нажмите 'Save'</li>
+                <li>Получите URL: https://sarkisisraelyan.github.io/tea-shop-mini-app</li>
+            </ol>
+        </div>
+
+        <div class="deploy-option">
+            <h3>🌐 Вариант 2: Netlify</h3>
+            <p>Быстро, drag & drop</p>
+            <a href="https://netlify.com" target="_blank" class="button">🚀 Открыть Netlify</a>
+            
+            <h4>📋 Инструкция:</h4>
+            <ol>
+                <li>Создайте аккаунт на Netlify</li>
+                <li>Перетащите папку dist в область загрузки</li>
+                <li>Получите URL для Mini App</li>
+            </ol>
+        </div>
+
+        <div class="deploy-option">
+            <h3>⚡ Вариант 3: Vercel</h3>
+            <p>Через GitHub, автоматическое развертывание</p>
+            <a href="https://vercel.com/new" target="_blank" class="button">🚀 Открыть Vercel</a>
+            
+            <h4>📋 Инструкция:</h4>
+            <ol>
+                <li>Войдите через GitHub</li>
+                <li>Выберите репозиторий tea-shop-mini-app</li>
+                <li>Настройте: Framework = Vite, Build = npm run build, Output = dist</li>
+                <li>Нажмите 'Deploy'</li>
+            </ol>
+        </div>
+
+        <div class="deploy-option success">
+            <h3>🔧 После получения URL:</h3>
+            <ol>
+                <li>Напишите @BotFather в Telegram</li>
+                <li>Команда: /setmenubutton</li>
+                <li>Выберите бота @CalmBrew_Bot</li>
+                <li>Текст: 🍵 Открыть магазин</li>
+                <li>URL: ваш URL с хостинга</li>
+            </ol>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://github.com/sarkisisraelyan/tea-shop-mini-app/settings/pages" target="_blank" class="button">🚀 Начать с GitHub Pages</a>
+            <a href="https://t.me/CalmBrew_Bot" target="_blank" class="button">🤖 Открыть бота</a>
+        </div>
+    </div>
+</body>
+</html>
