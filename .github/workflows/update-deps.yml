@@ -1,0 +1,72 @@
+name: Auto Update Dependencies
+
+on:
+  schedule:
+    # Проверяем обновления каждые 24 часа
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Check for updates
+        id: check-updates
+        run: |
+          npm outdated --json > outdated.json || true
+          if [ -s outdated.json ]; then
+            echo "updates=true" >> $GITHUB_OUTPUT
+            echo "Updates available:"
+            cat outdated.json
+          else
+            echo "updates=false" >> $GITHUB_OUTPUT
+            echo "No updates available"
+          fi
+      
+      - name: Update dependencies
+        if: steps.check-updates.outputs.updates == 'true'
+        run: |
+          npm update
+          npm audit fix --force
+      
+      - name: Create Pull Request
+        if: steps.check-updates.outputs.updates == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: auto-update dependencies"
+          title: "🤖 Auto-update dependencies"
+          body: |
+            ## 🤖 Автоматическое обновление зависимостей
+            
+            Этот PR был создан автоматически для обновления устаревших пакетов.
+            
+            ### Что обновлено:
+            - Зависимости npm
+            - Исправления безопасности
+            
+            ### Проверьте:
+            - [ ] Приложение работает корректно
+            - [ ] Нет критических изменений
+            - [ ] Тесты проходят
+            
+            ---
+            *Создано автоматически GitHub Actions*
+          branch: auto-update-deps
+          delete-branch: true

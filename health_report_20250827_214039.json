@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-08-27T21:40:39.687614",
+  "services": {
+    "GitHub Pages": {
+      "status": "⚠️ Ошибка 404",
+      "response_time": "0.46s",
+      "status_code": 404
+    },
+    "Telegram Bot": {
+      "status": "✅ Доступен",
+      "status_code": 200
+    },
+    "GitHub Repo": {
+      "status": "⚠️ Ошибка 404",
+      "response_time": "0.60s",
+      "status_code": 404
+    },
+    "GitHub Actions": {
+      "status": "⚠️ Ошибка 404",
+      "status_code": 404
+    }
+  },
+  "summary": {
+    "total": 4,
+    "online": 1,
+    "offline": 0
+  }
+}

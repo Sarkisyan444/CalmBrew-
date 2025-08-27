@@ -1,21 +1,31 @@
-name: Deploy to GitHub Pages
+name: Continuous Deployment - CalmBrew Tea Shop
 
 on:
   push:
+    branches: [ main, develop ]
+  pull_request:
     branches: [ main ]
   workflow_dispatch:
+  schedule:
+    # Проверяем каждые 6 часов
+    - cron: '0 */6 * * *'
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  NODE_VERSION: '18'
+  CACHE_DEPENDENCIES: true
+
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,14 +34,44 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: ${{ env.NODE_VERSION }}
+          cache: ${{ env.CACHE_DEPENDENCIES }}
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: npm test --if-present
+      
+      - name: Check build
+        run: npm run build --dry-run --if-present
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: ${{ env.CACHE_DEPENDENCIES }}
       
       - name: Install dependencies
         run: npm ci
       
       - name: Build
         run: npm run build
+      
+      - name: Cache build
+        uses: actions/cache@v3
+        with:
+          path: dist
+          key: ${{ runner.os }}-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-build-
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -51,3 +91,42 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      
+      - name: Notify deployment
+        run: |
+          echo "🚀 Deployment successful!"
+          echo "URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
+
+  health-check:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Wait for deployment
+        run: sleep 30
+      
+      - name: Health check
+        run: |
+          URL="${{ needs.deploy.outputs.url }}"
+          if curl -f -s "$URL" > /dev/null; then
+            echo "✅ Health check passed: $URL"
+          else
+            echo "❌ Health check failed: $URL"
+            exit 1
+          fi
+
+  monitor:
+    runs-on: ubuntu-latest
+    needs: [deploy, health-check]
+    if: always()
+    steps:
+      - name: Deployment status
+        run: |
+          if [ "${{ needs.deploy.result }}" == "success" ]; then
+            echo "🎉 Deployment completed successfully!"
+            echo "🌐 URL: ${{ needs.deploy.outputs.url }}"
+          else
+            echo "💥 Deployment failed!"
+            exit 1
+          fi
