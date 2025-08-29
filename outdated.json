@@ -1,0 +1,58 @@
+{
+  "@twa-dev/sdk": {
+    "current": "6.9.2",
+    "wanted": "6.9.2",
+    "latest": "8.0.2",
+    "dependent": "CalmBrew-",
+    "location": "/home/runner/work/CalmBrew-/CalmBrew-/node_modules/@twa-dev/sdk"
+  },
+  "@types/react": {
+    "current": "18.3.24",
+    "wanted": "18.3.24",
+    "latest": "19.1.12",
+    "dependent": "CalmBrew-",
+    "location": "/home/runner/work/CalmBrew-/CalmBrew-/node_modules/@types/react"
+  },
+  "@types/react-dom": {
+    "current": "18.3.7",
+    "wanted": "18.3.7",
+    "latest": "19.1.9",
+    "dependent": "CalmBrew-",
+    "location": "/home/runner/work/CalmBrew-/CalmBrew-/node_modules/@types/react-dom"
+  },
+  "@vitejs/plugin-react": {
+    "current": "3.1.0",
+    "wanted": "3.1.0",
+    "latest": "4.7.0",
+    "dependent": "CalmBrew-",
+    "location": "/home/runner/work/CalmBrew-/CalmBrew-/node_modules/@vitejs/plugin-react"
+  },
+  "react": {
+    "current": "18.3.1",
+    "wanted": "18.3.1",
+    "latest": "19.1.1",
+    "dependent": "CalmBrew-",
+    "location": "/home/runner/work/CalmBrew-/CalmBrew-/node_modules/react"
+  },
+  "react-dom": {
+    "current": "18.3.1",
+    "wanted": "18.3.1",
+    "latest": "19.1.1",
+    "dependent": "CalmBrew-",
+    "location": "/home/runner/work/CalmBrew-/CalmBrew-/node_modules/react-dom"
+  },
+  "typescript": {
+    "current": "4.9.5",
+    "wanted": "4.9.5",
+    "latest": "5.9.2",
+    "dependent": "CalmBrew-",
+    "location": "/home/runner/work/CalmBrew-/CalmBrew-/node_modules/typescript"
+  },
+  "vite": {
+    "current": "4.5.14",
+    "wanted": "4.5.14",
+    "latest": "6.3.5",
+    "dependent": "CalmBrew-",
+    "location": "/home/runner/work/CalmBrew-/CalmBrew-/node_modules/vite"
+  }
+}
